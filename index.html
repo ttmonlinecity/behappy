@@ -343,7 +343,8 @@ html.big body{font-size:20px}
 .assist .av{width:60px; height:60px; border-radius:50%; background:var(--surface); display:grid; place-items:center; font-size:1.8rem; flex:none}
 .assist .tx{flex:1; min-width:220px}
 .assist .tx p{margin:.2em 0 0; color:var(--muted); font-size:.95rem}
-.assist a.btn{text-decoration:none; display:inline-block}
+.assist .soon{display:inline-block; vertical-align:middle; font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px; background:var(--pink-strong); color:#fff; margin-left:6px}
+.assist .soon-msg{color:var(--warn-ink) !important; font-weight:600; background:var(--surface); border-radius:12px; padding:8px 12px; margin-top:8px !important}
 
 footer{margin-top:40px; font-size:.9rem; color:var(--muted)}
 footer ul{padding-left:1.2em}
@@ -409,7 +410,7 @@ footer ul{padding-left:1.2em}
 
   <div class="wrap">
     <ul class="offers">
-      <li><div class="ic" aria-hidden="true">💬</div><b>Trợ lý BeHappy</b><span class="t">Hỏi đáp về dinh dưỡng, sức khỏe kèm nguồn chính thống (mở trong Claude).</span></li>
+      <li><div class="ic" aria-hidden="true">💬</div><b>Trợ lý BeHappy</b><span class="t">Hỏi đáp về dinh dưỡng, sức khỏe kèm nguồn chính thống. Coming soon!</span></li>
       <li><div class="ic" aria-hidden="true">📏</div><b>Chỉ số cơ thể</b><span class="t">BMI theo ngưỡng WHO dành cho người châu Á.</span></li>
       <li><div class="ic" aria-hidden="true">🥗</div><b>Thực phẩm</b><span class="t">Thành phần dinh dưỡng của món quen thuộc.</span></li>
       <li><div class="ic" aria-hidden="true">🌸</div><b>Thư giãn</b><span class="t">Bài tập thở, câu đố và điều thú vị.</span></li>
@@ -472,8 +473,8 @@ footer ul{padding-left:1.2em}
     <!-- Lối sang bản Claude -->
     <div class="assist">
       <div class="av" aria-hidden="true">💬</div>
-      <div class="tx"><h3>Hỏi trợ lý BeHappy</h3><p>Muốn tra cứu thông tin, trò chuyện hỏi đáp hoặc gửi góp ý? Chạm nút bên cạnh để mở BeHappy trong Claude. Cần có tài khoản Claude.</p></div>
-      <a class="btn pink" href="https://claude.ai/artifact/BdVGgjGUXgkRqkmgc13m9d" target="_blank" rel="noopener">💬 Mở trợ lý</a>
+      <div class="tx"><h3>Trợ lý BeHappy <span class="soon">Coming soon</span></h3><p>Tra cứu thông tin, trò chuyện hỏi đáp và gửi góp ý ngay trên trang. Tính năng đang được chuẩn bị, bạn chờ nhé!</p><p class="soon-msg hidden" id="soonMsg" role="status">🌸 Trợ lý BeHappy sắp ra mắt. Cảm ơn bạn đã chờ đợi!</p></div>
+      <button type="button" class="btn pink" id="soonBtn">💬 Coming soon</button>
     </div>
 
     <!-- Ô tra cứu -->
@@ -685,14 +686,12 @@ footer ul{padding-left:1.2em}
     <p class="muted" style="margin-top:0">Chỉ cần chạm (hoặc bấm chuột) vào các nút dưới đây. Không lo bấm nhầm, mọi thứ đều sửa lại được.</p>
     <ol class="steps">
       <li><span class="si">📏</span><div><b>Xem chỉ số cơ thể</b>Chạm vào ô <b>“📏 Chỉ số cơ thể”</b> ở hàng nút phía trên. Trang sẽ hiện chỉ số BMI của bạn.</div></li>
-      <li><span class="si">💬</span><div><b>Hỏi trợ lý BeHappy</b>Chạm nút hồng <b>“💬 Mở trợ lý”</b> ở đầu trang. Một trang mới sẽ mở ra trong Claude để bạn tra cứu, trò chuyện hỏi đáp và gửi góp ý. Cần đăng nhập tài khoản Claude.</div></li>
       <li><span class="si">🥗</span><div><b>Tìm thực phẩm</b>Chạm ô <b>“🥗 Thực phẩm”</b>, rồi gõ tên món vào ô tìm kiếm. Gõ không dấu cũng được, ví dụ “rau muong”.</div></li>
       <li><span class="si">🔥</span><div><b>Ghi calo và lịch tập</b>Chạm ô <b>“🔥 Calo & lịch tập”</b>. Chọn món đã ăn hoặc bài đã tập, rồi chạm <b>“Thêm vào nhật ký”</b>.</div></li>
       <li><span class="si">🎈</span><div><b>Giải trí</b>Chạm ô <b>“🎈 Giải trí”</b> để xem các môn thể thao, sách hay và bài tập thở.</div></li>
       </ol>
     <div class="tips">
       <p><b>🔠 Chữ nhỏ quá?</b> Chạm nút <b>“A+ Chữ to”</b> ở góc trên. Chạm lần nữa để trở về cỡ thường.</p>
-      <p><b>🔐 Hiện bảng xin phép?</b> Lần đầu mở trợ lý trong Claude, Claude sẽ hỏi bạn có cho phép không. Chạm <b>“Cho phép”</b> để dùng.</p>
       <p><b>📞 Cần giúp?</b> Cứ nhờ con cháu hoặc người thân ngồi cùng lần đầu nhé.</p>
       <p><b>👩‍⚕️ Nhớ nhé:</b> Thông tin ở đây chỉ để tham khảo. Khi cần lời khuyên cho sức khỏe của mình, hãy hỏi bác sĩ.</p>
     </div>
@@ -1287,6 +1286,8 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('#guide').class
 function showHint(on){ $('#chatHint').classList.toggle('hidden', !on || !!PR.hintOff); }
 $('#hintClose').addEventListener('click',()=>{ PR.hintOff=true; savePR(); showHint(false); });
 $('#chatFab').addEventListener('click',()=>showHint(false));
+
+$('#soonBtn').addEventListener('click',()=>{ $('#soonMsg').classList.remove('hidden'); });
 
 /* ---------- Chat tra cứu ---------- */
 const CHAT_RULES=`Bạn là "Trợ lý tra cứu" của trang web gia đình "Sổ tay sức khỏe gia đình" tại Việt Nam. Trò chuyện bằng tiếng Việt, thân thiện, ngắn gọn (tối đa khoảng 180 chữ mỗi lượt).
